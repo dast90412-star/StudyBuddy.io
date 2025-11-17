@@ -1,0 +1,281 @@
+ /*Page background: fixed so it doesn't move when content scrolls */
+body {
+    font-family: 'Inter', sans-serif;
+    background-image: url('noob.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #1e293b; /* fallback/bg color */
+    color: #f8fafc; /* text-white */
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start; /* allow container to flow and page to scroll */
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.container {
+    background-color: #1f2937; /* bg-slate-800 */
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    max-width: 32rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Header Styles */
+.container > div:first-child {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #2dd4bf; /* text-teal-400 */
+}
+
+p.text-sm {
+    font-size: 0.875rem;
+    color: #94a3b8; /* text-slate-400 */
+}
+
+/* User ID Display */
+#userIdDisplay {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #64748b;
+    font-family: monospace;
+    word-break: break-all;
+    background-color: #334155; /* bg-slate-700 */
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+/* Input Section Styles */
+.space-y-6 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.space-y-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #cbd5e1; /* text-slate-300 */
+}
+
+/* Target all inputs/selects EXCEPT checkboxes */
+input:not([type="checkbox"]), select {
+    background-color: #334155; /* bg-slate-700 */
+    border: 1px solid #475569; /* border-slate-600 */
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    color: #e2e8f0; /* text-slate-200 */
+    width: 100%;
+}
+
+input:focus:not([type="checkbox"]), select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #2dd4bf;
+}
+
+/* Specific Input/Button layout */
+.flex {
+    display: flex;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+/* Button Styles */
+button {
+    font-weight: 600;
+    color: #f8fafc;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.03); 
+}
+
+#addSubjectBtn, #addAssignmentBtn, #addExamBtn {
+    background-color: #0d9488; /* bg-teal-500 */
+}
+
+#addSubjectBtn:hover, #addAssignmentBtn:hover, #addExamBtn:hover {
+    background-color: #0f766e; /* hover:bg-teal-600 */
+}
+
+#generateScheduleBtn {
+    width: 100%;
+    background-color: #10b981; /* bg-emerald-500 */
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+#generateScheduleBtn:hover {
+    background-color: #059669; /* hover:bg-emerald-600 */
+}
+
+/* --- List Styles --- */
+
+/* Subject Tags */
+#subjectsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+#subjectsList span {
+    background-color: #0f766e; /* bg-teal-700 */
+    color: #ccfbf1; /* text-teal-100 */
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.125rem 0.625rem;
+    border-radius: 9999px;
+    display: inline-block;
+}
+
+/* Assignment and Exam Lists (Container for input tasks) */
+#assignmentsList, #examsList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#assignmentsList p, #examsList p {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background-color: #334155; /* bg-slate-700 */
+    border-radius: 0.375rem;
+    color: #e2e8f0;
+    font-size: 0.9rem;
+}
+
+/* Checkbox Style (for input tasks) */
+#assignmentsList input[type="checkbox"], 
+#examsList input[type="checkbox"] {
+    width: auto;
+    margin-right: 0.75rem;
+    appearance: none;
+    background-color: #475569; /* Unchecked background */
+    border: 1px solid #64748b;
+    border-radius: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#assignmentsList input[type="checkbox"]:checked, 
+#examsList input[type="checkbox"]:checked {
+    background-color: #0d9488; /* Checked background */
+    border-color: #0d9488;
+}
+
+/* --- Schedule Output Section --- */
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    color: #2dd4bf; /* text-teal-400 */
+}
+
+/* List container for generated schedule */
+#scheduleList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; 
+}
+
+/* Style for individual generated task item */
+#scheduleList p {
+    text-align: left;
+    justify-content: space-between; /* Separate text and button */
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #334155; /* bg-slate-700 */
+    border-radius: 0.5rem;
+    color: #e2e8f0;
+}
+
+/* Style for the completion button on generated tasks */
+.complete-schedule-task-btn {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem; 
+    border-radius: 0.375rem; 
+    font-weight: 500;
+    transition: background-color 0.2s;
+    transform: none; 
+    margin-left: 10px; /* Space between text and button */
+}
+
+/* Style for the "Done" button (Incomplete task) */
+.done-btn {
+    background-color: #0d9488; /* Teal color */
+    color: #fff;
+}
+.done-btn:hover {
+    background-color: #0f766e;
+}
+
+/* Style for the "Undo" button (Completed task) */
+.undo-btn {
+    background-color: #ef4444; /* Red color */
+    color: #fff;
+}
+.undo-btn:hover {
+    background-color: #dc2626;
+}
+
+/* --- Completion Status Styles --- */
+
+/* Base style for completed tasks (Assignments, Exams, and Schedule) */
+.completed-task {
+    text-decoration: line-through;
+    color: #6c757d !important; /* Lighter color */
+    font-style: italic;
+    background-color: #2b3a4a !important; /* Slightly different background */
+}
+
+/* Ensure the span text within the completed item gets the completion color */
+.completed-task span {
+    color: #6c757d !important; 
+}
+
+/* Error message style */
+.text-red-500 {
+    color: #ef4444; /* text-red-500 */
+}
+.text-center {
+    text-align: center;
+}
